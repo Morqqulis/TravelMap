@@ -12,7 +12,6 @@ export const SearchAddress = ({ getDirectionsResponsData }: any): Promise<void> 
 	const originRef = useRef<HTMLInputElement | any>(null);
 	const destinationRef = useRef<HTMLInputElement | any>(null);
 	const [price, setPrice] = useState<any>(0);
-
 	const calcRoute = async (): Promise<void> => {
 		if (originRef.current?.value === "" || destinationRef.current?.value === "") return;
 
@@ -71,8 +70,11 @@ export const SearchAddress = ({ getDirectionsResponsData }: any): Promise<void> 
 
 	/* @ts-ignore */
 	return (
-		<div className='absolute left-0 -top-[320px] sm:-top-[205px] z-30 w-full max-w-xl group-[.inputs-menu--active]:top-0 pb-[48px] transition-all'>
-			<>
+		<>
+			<div
+				className={`absolute left-1/2 -translate-x-1/2 overflow-auto  ${
+					distanse ? "-top-[380px] sm:-top-[270px]" : "-top-[320px] sm:-top-[205px]"
+				} z-30 w-full max-w-xl group-[.inputs-menu--active]:top-0 pb-[48px] transition-all`}>
 				<div className='grid grid-cols-1 sm:grid-cols-2 gap-2.5 p-2.5 bg-foreground-100  '>
 					<Autocomplete className='w-full'>
 						<input
@@ -100,15 +102,17 @@ export const SearchAddress = ({ getDirectionsResponsData }: any): Promise<void> 
 						Marşrut
 					</Button>
 				</div>
-				<div className='flex text-center items-center justify-around gap-2.5 bg-foreground-200 p-2 rounded-b-xl '>
+				<div className=' gap-2.5 bg-foreground-200 p-2 rounded-b-xl flex flex-col text-center'>
 					{!directionsDesponse ? (
 						<>
-							<Spinner color='success' label={`Mesafe: ?`} labelColor='success' />
-							<Spinner color='secondary' label={"Vaxt: ?"} labelColor='secondary' />
-							<Spinner color='warning' label='Qiymet: ?' labelColor='warning' />
+							<div className='flex gap-2.5 justify-around'>
+								<Spinner color='success' label={`Mesafe: ?`} labelColor='success' />
+								<Spinner color='secondary' label={"Vaxt: ?"} labelColor='secondary' />
+								<Spinner color='warning' label='Qiymet: ?' labelColor='warning' />
+							</div>
 						</>
 					) : (
-						<div className='flex justify-between w-full gap-2.5 flex-wrap'>
+						<>
 							<Code className='w-full py-2' color='warning'>
 								Məsafə: {distanse}
 							</Code>
@@ -118,32 +122,32 @@ export const SearchAddress = ({ getDirectionsResponsData }: any): Promise<void> 
 							<Code className='w-full py-2' color='warning'>
 								Price: {price.toFixed(2)} AZN
 							</Code>
-						</div>
+						</>
 					)}
+					<Button
+						onClick={handleMenuOpen}
+						className='dropdownBtn absolute bottom-0 left-1/2 -translate-x-1/2 z50 rotate-0 group-[.inputs-menu--active]:bg-danger group-[.inputs-menu--active]:-rotate-180'
+						size='lg'
+						color='success'
+						radius='sm'>
+						<svg
+							className='w-[25px] h-[25px] animate-bounce'
+							stroke='currentColor'
+							fill='currentColor'
+							strokeWidth='0'
+							viewBox='0 0 20 20'
+							aria-hidden='true'
+							height='200px'
+							width='200px'
+							xmlns='http://www.w3.org/2000/svg'>
+							<path
+								fillRule='evenodd'
+								d='M10 2a.75.75 0 01.75.75v12.59l1.95-2.1a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 111.1-1.02l1.95 2.1V2.75A.75.75 0 0110 2z'
+								clipRule='evenodd'></path>
+						</svg>
+					</Button>
 				</div>
-				<Button
-					onClick={handleMenuOpen}
-					className='dropdownBtn absolute bottom-0 left-1/2 -translate-x-1/2  z-50 rotate-0 group-[.inputs-menu--active]:bg-danger group-[.inputs-menu--active]:-rotate-180'
-					size='lg'
-					color='primary'
-					radius='sm'>
-					<svg
-						className='w-[25px] h-[25px] animate-bounce'
-						stroke='currentColor'
-						fill='currentColor'
-						strokeWidth='0'
-						viewBox='0 0 20 20'
-						aria-hidden='true'
-						height='200px'
-						width='200px'
-						xmlns='http://www.w3.org/2000/svg'>
-						<path
-							fillRule='evenodd'
-							d='M10 2a.75.75 0 01.75.75v12.59l1.95-2.1a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 111.1-1.02l1.95 2.1V2.75A.75.75 0 0110 2z'
-							clipRule='evenodd'></path>
-					</svg>
-				</Button>
-			</>
-		</div>
+			</div>
+		</>
 	);
 };

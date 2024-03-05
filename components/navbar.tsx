@@ -33,7 +33,7 @@ export const Navbar = async () => {
 					</NavbarItem>
 				)}
 			</NavbarContent>
-			<NavbarContent justify='center'>
+			<NavbarContent className='hidden sm:block' justify='center'>
 				{session?.user?.name && (
 					<NavbarItem className=''>
 						<h1 className='grid gap-1 text-lg font-bold text-center'>
@@ -44,8 +44,8 @@ export const Navbar = async () => {
 				<NavbarItem></NavbarItem>
 			</NavbarContent>
 
-			<NavbarContent className='hidden sm:flex basis-1/5 sm:basis-full' justify='end'>
-				<NavbarItem className='hidden gap-2 sm:flex'>
+			<NavbarContent className='gap-2 sm:flex basis-1/5 sm:basis-full' justify='end'>
+				<NavbarItem className='flex gap-2'>
 					<Link isExternal href={siteConfig.links.twitter} aria-label='Twitter'>
 						<TwitterIcon className='text-default-500' />
 					</Link>
