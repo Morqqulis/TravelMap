@@ -72,7 +72,7 @@ export const SearchAddress = ({ getDirectionsResponsData }: any): Promise<void> 
 	return (
 		<>
 			<div
-				className={`absolute left-1/2 -translate-x-1/2 overflow-auto  ${
+				className={`absolute left-1/2 -translate-x-1/2  ${
 					distanse ? "-top-[380px] sm:-top-[270px]" : "-top-[320px] sm:-top-[205px]"
 				} z-30 w-full max-w-xl group-[.inputs-menu--active]:top-0 pb-[48px] transition-all`}>
 				<div className='grid grid-cols-1 sm:grid-cols-2 gap-2.5 p-2.5 bg-foreground-100  '>
