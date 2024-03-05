@@ -1,4 +1,5 @@
 import "@/styles/globals.css";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Viewport } from "next";
 import { Metadata } from "next";
 import { siteConfig } from "@/config/site";
@@ -28,7 +29,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
-		<html className="group" lang='en' suppressHydrationWarning>
+		<html className='group' lang='en' suppressHydrationWarning>
 			<head />
 			<body className={clsx("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>
 				<Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
@@ -39,6 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 						<footer className=''></footer>
 					</div>
 				</Providers>
+				<SpeedInsights />
 			</body>
 		</html>
 	);
