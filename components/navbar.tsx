@@ -7,7 +7,6 @@ import { auth, signOut } from "@/app/auth";
 import { Avatar } from "@nextui-org/avatar";
 import { Button } from "@nextui-org/button";
 
-
 export const Navbar = async () => {
 	const session = await auth();
 	return (
@@ -18,7 +17,7 @@ export const Navbar = async () => {
 						<form
 							action={async () => {
 								"use server";
-								await signOut({ redirect: false });
+								await signOut({ redirect: true });
 							}}>
 							<Button color='warning' type='submit'>
 								Sign Out

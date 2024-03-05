@@ -17,6 +17,7 @@
 		"@nextui-org/kbd": "latest",
 		"@nextui-org/link": "latest",
 		"@nextui-org/navbar": "latest",
+		"@nextui-org/scroll-shadow": "^2.1.13",
 		"@nextui-org/snippet": "latest",
 		"@nextui-org/spinner": "latest",
 		"@nextui-org/switch": "latest",

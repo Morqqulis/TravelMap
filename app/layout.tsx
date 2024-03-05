@@ -33,7 +33,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 			<head />
 			<body className={clsx("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>
 				<Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-					<div className='relative flex flex-col h-full overflow-hidden'>
+					<div className='relative flex flex-col h-full overflow-clip'>
 						{/* @ts-ignore */}
 						<Navbar />
 						<main className='flex-grow'>{children}</main>

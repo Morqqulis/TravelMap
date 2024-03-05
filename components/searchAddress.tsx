@@ -3,6 +3,7 @@ import { Spinner } from "@nextui-org/spinner";
 import { Code } from "@nextui-org/code";
 import { Autocomplete } from "@react-google-maps/api";
 import { useEffect, useRef, useState } from "react";
+import { ScrollShadow } from "@nextui-org/scroll-shadow";
 
 export const SearchAddress = ({ getDirectionsResponsData }: any): Promise<void> => {
 	const [directionsDesponse, setDirectionsResponse] = useState<any>(null);
@@ -32,7 +33,6 @@ export const SearchAddress = ({ getDirectionsResponsData }: any): Promise<void> 
 			getDirectionsResponsData(results);
 			setDistanse(results.routes[0]?.legs[0]?.distance?.text || "");
 			setDuration(results.routes[0]?.legs[0]?.duration?.text || "");
-
 			const calculatedPrice = calculatePrice(distanceInKm);
 			setPrice(calculatedPrice);
 		} catch (error) {
@@ -71,9 +71,9 @@ export const SearchAddress = ({ getDirectionsResponsData }: any): Promise<void> 
 
 	/* @ts-ignore */
 	return (
-		<div className='absolute -top-[320px] z-10 -translate-x-1/2 left-1/2 transition-all inputs-menu group-[.inputs-menu--active]:top-0 container max-w-xl'>
-			<div className='grid gap-2.5 p-2.5 bg-foreground-100 border-b-1 border-foreground-300 '>
-				<div className='grid gap-2.5 w-full'>
+		<div className='absolute left-0 -top-[320px] sm:-top-[205px] z-30 w-full max-w-xl group-[.inputs-menu--active]:top-0 pb-[48px] transition-all'>
+			<>
+				<div className='grid grid-cols-1 sm:grid-cols-2 gap-2.5 p-2.5 bg-foreground-100  '>
 					<Autocomplete className='w-full'>
 						<input
 							className='p-2.5 rounded-xl w-full block focus:outline-none transition-all duration-300 focus:border focus:border-warning border border-secondary'
@@ -92,58 +92,58 @@ export const SearchAddress = ({ getDirectionsResponsData }: any): Promise<void> 
 						/>
 					</Autocomplete>
 				</div>
-				<Button className='' color='success' variant='shadow' size='lg' onClick={calcRoute}>
-					Marşrut
-				</Button>
-				<Button className='' color='warning' variant='shadow' size='lg' onClick={clearRoutes}>
-					Clean
-				</Button>
-			</div>
-			<div className='flex text-center items-center justify-around gap-2.5 bg-foreground-200 p-2 rounded-b-xl flex-wrap'>
-				{!directionsDesponse ? (
-					<>
-						<Spinner color='success' label={`Mesafe: ?`} labelColor='success' />
-						<Spinner color='secondary' label={"Vaxt: ?"} labelColor='secondary' />
-						<Spinner color='warning' label='Qiymet: ?' labelColor='warning' />
-					</>
-				) : (
-					<>
-						<div className='flex justify-between w-full gap-2.5'>
-							<Code className='w-full py-[22px]' color='warning'>
+				<div className='grid grid-cols-1 sm:grid-cols-2 gap-2.5 p-2.5 pt-0 bg-foreground-100 border-b-1 border-foreground-300'>
+					<Button className='w-full' color='success' variant='shadow' size='lg' onClick={calcRoute}>
+						Marşrut
+					</Button>
+					<Button className='w-full' color='warning' variant='shadow' size='lg' onClick={clearRoutes}>
+						Clean
+					</Button>
+				</div>
+				<div className='flex text-center items-center justify-around gap-2.5 bg-foreground-200 p-2 rounded-b-xl '>
+					{!directionsDesponse ? (
+						<>
+							<Spinner color='success' label={`Mesafe: ?`} labelColor='success' />
+							<Spinner color='secondary' label={"Vaxt: ?"} labelColor='secondary' />
+							<Spinner color='warning' label='Qiymet: ?' labelColor='warning' />
+						</>
+					) : (
+						<div className='flex justify-between w-full gap-2.5 flex-wrap'>
+							<Code className='w-full py-2' color='warning'>
 								Məsafə: {distanse}
 							</Code>
-							<Code className='w-full py-[22px]' color='warning'>
+							<Code className='w-full py-2' color='warning'>
 								Vaxt: {duration}
 							</Code>
-							<Code className='w-full py-[22px]' color='warning'>
+							<Code className='w-full py-2' color='warning'>
 								Price: {price.toFixed(2)} AZN
 							</Code>
 						</div>
-					</>
-				)}
-			</div>
-			<Button
-				onClick={handleMenuOpen}
-				className='dropdownBtn absolute -translate-x-1/2 left-1/2 group-[.inputs-menu--active]:bg-red-500 group-[.inputs-menu--active]:rotate-180'
-				size='lg'
-				color='success'
-				radius='sm'>
-				<svg
-					className='w-[25px] h-[25px] animate-bounce '
-					stroke='currentColor'
-					fill='currentColor'
-					strokeWidth='0'
-					viewBox='0 0 20 20'
-					aria-hidden='true'
-					height='200px'
-					width='200px'
-					xmlns='http://www.w3.org/2000/svg'>
-					<path
-						fillRule='evenodd'
-						d='M10 2a.75.75 0 01.75.75v12.59l1.95-2.1a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 111.1-1.02l1.95 2.1V2.75A.75.75 0 0110 2z'
-						clipRule='evenodd'></path>
-				</svg>
-			</Button>
+					)}
+				</div>
+				<Button
+					onClick={handleMenuOpen}
+					className='dropdownBtn absolute bottom-0 left-1/2 -translate-x-1/2  z-50 rotate-0 group-[.inputs-menu--active]:bg-danger group-[.inputs-menu--active]:-rotate-180'
+					size='lg'
+					color='primary'
+					radius='sm'>
+					<svg
+						className='w-[25px] h-[25px] animate-bounce'
+						stroke='currentColor'
+						fill='currentColor'
+						strokeWidth='0'
+						viewBox='0 0 20 20'
+						aria-hidden='true'
+						height='200px'
+						width='200px'
+						xmlns='http://www.w3.org/2000/svg'>
+						<path
+							fillRule='evenodd'
+							d='M10 2a.75.75 0 01.75.75v12.59l1.95-2.1a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 111.1-1.02l1.95 2.1V2.75A.75.75 0 0110 2z'
+							clipRule='evenodd'></path>
+					</svg>
+				</Button>
+			</>
 		</div>
 	);
 };
