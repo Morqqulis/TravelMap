@@ -93,11 +93,11 @@ export const SearchAddress = ({ getDirectionsResponsData }: any): Promise<void> 
 					</Autocomplete>
 				</div>
 				<div className='grid grid-cols-1 sm:grid-cols-2 gap-2.5 p-2.5 pt-0 bg-foreground-100 border-b-1 border-foreground-300'>
-					<Button className='w-full' color='success' variant='shadow' size='lg' onClick={calcRoute}>
-						Marşrut
-					</Button>
 					<Button className='w-full' color='warning' variant='shadow' size='lg' onClick={clearRoutes}>
 						Clean
+					</Button>
+					<Button className='w-full' color='success' variant='shadow' size='lg' onClick={calcRoute}>
+						Marşrut
 					</Button>
 				</div>
 				<div className='flex text-center items-center justify-around gap-2.5 bg-foreground-200 p-2 rounded-b-xl '>
