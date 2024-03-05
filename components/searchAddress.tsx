@@ -23,7 +23,6 @@ export const SearchAddress = ({ getDirectionsResponsData }: any): Promise<void> 
 				travelMode: google.maps.TravelMode.DRIVING,
 				region: "az",
 				language: "az",
-				waypoints: [{ location: "Baku" }],
 				provideRouteAlternatives: true,
 			});
 
@@ -75,10 +74,10 @@ export const SearchAddress = ({ getDirectionsResponsData }: any): Promise<void> 
 		<div className='absolute -top-[320px] z-10 -translate-x-1/2 left-1/2 transition-all inputs-menu group-[.inputs-menu--active]:top-0 container max-w-xl'>
 			<div className='grid gap-2.5 p-2.5 bg-foreground-100 border-b-1 border-foreground-300 '>
 				<div className='grid gap-2.5 w-full'>
-					<Autocomplete className='w-full text-orange-500'>
+					<Autocomplete className='w-full'>
 						<input
 							className='p-2.5 rounded-xl w-full block focus:outline-none transition-all duration-300 focus:border focus:border-warning border border-secondary'
-							placeholder='Address'
+							placeholder='Hardan ?'
 							ref={originRef}
 							required
 						/>
@@ -87,20 +86,20 @@ export const SearchAddress = ({ getDirectionsResponsData }: any): Promise<void> 
 					<Autocomplete className='w-full'>
 						<input
 							className='p-2.5 rounded-xl w-full block focus:outline-none transition-all duration-300 focus:border focus:border-warning border border-secondary'
-							placeholder='Address'
+							placeholder='Hara ?'
 							ref={destinationRef}
 							required
 						/>
 					</Autocomplete>
 				</div>
 				<Button className='' color='success' variant='shadow' size='lg' onClick={calcRoute}>
-					Get Route
+					Marşrut
 				</Button>
 				<Button className='' color='warning' variant='shadow' size='lg' onClick={clearRoutes}>
 					Clean
 				</Button>
 			</div>
-			<div className='flex text-center items-center justify-around gap-2.5 bg-foreground-200 py-2 rounded-b-xl flex-wrap'>
+			<div className='flex text-center items-center justify-around gap-2.5 bg-foreground-200 p-2 rounded-b-xl flex-wrap'>
 				{!directionsDesponse ? (
 					<>
 						<Spinner color='success' label={`Mesafe: ?`} labelColor='success' />
@@ -109,9 +108,17 @@ export const SearchAddress = ({ getDirectionsResponsData }: any): Promise<void> 
 					</>
 				) : (
 					<>
-						<Code color='warning'>{distanse}</Code>
-						<Code color='warning'>{duration}</Code>
-						<Code color='warning'>Price: {price.toFixed(2)} AZN</Code>
+						<div className='flex justify-between w-full gap-2.5'>
+							<Code className='w-full py-[22px]' color='warning'>
+								Məsafə: {distanse}
+							</Code>
+							<Code className='w-full py-[22px]' color='warning'>
+								Vaxt: {duration}
+							</Code>
+							<Code className='w-full py-[22px]' color='warning'>
+								Price: {price.toFixed(2)} AZN
+							</Code>
+						</div>
 					</>
 				)}
 			</div>
@@ -122,7 +129,7 @@ export const SearchAddress = ({ getDirectionsResponsData }: any): Promise<void> 
 				color='success'
 				radius='sm'>
 				<svg
-					className='w-[20px] h-[20px] animate-bounce '
+					className='w-[25px] h-[25px] animate-bounce '
 					stroke='currentColor'
 					fill='currentColor'
 					strokeWidth='0'
