@@ -96,7 +96,7 @@ export const SearchAddress = ({ getDirectionsResponsData }: any): Promise<void> 
 				</div>
 				<div className='grid grid-cols-1 sm:grid-cols-2 gap-2.5 p-2.5 pt-0 bg-foreground-100 border-b-1 border-foreground-300'>
 					<Button className='w-full' color='warning' variant='shadow' size='lg' onClick={clearRoutes}>
-						Clean
+						təmizləmək
 					</Button>
 					<Button className='w-full' color='success' variant='shadow' size='lg' onClick={calcRoute}>
 						Marşrut
@@ -106,9 +106,9 @@ export const SearchAddress = ({ getDirectionsResponsData }: any): Promise<void> 
 					{!directionsDesponse ? (
 						<>
 							<div className='flex gap-2.5 justify-around'>
-								<Spinner color='success' label={`Mesafe: ?`} labelColor='success' />
-								<Spinner color='secondary' label={"Vaxt: ?"} labelColor='secondary' />
-								<Spinner color='warning' label='Qiymet: ?' labelColor='warning' />
+								<Spinner color='success' label='Məsafə: ?' labelColor='success' />
+								<Spinner color='secondary' label='Vaxt: ?' labelColor='secondary' />
+								<Spinner color='warning' label='Qiymət: ?' labelColor='warning' />
 							</div>
 						</>
 					) : (
