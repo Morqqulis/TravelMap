@@ -29,7 +29,7 @@ export const Auth = async () => {
 					<Signout />
 				</div>
 			) : (
-				<Button as={Link} color='danger' href='/api/auth/signin'>
+				<Button as={Link} color='danger' href='/api/auth/signIn'>
 					Sign In
 				</Button>
 			)}
