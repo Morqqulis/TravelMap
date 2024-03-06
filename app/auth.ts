@@ -11,8 +11,13 @@ const {
 		GoogleProvider({
 			clientId: process.env.NEXT_PUBLIC_GOOGLE_AUTH_CLIENT_ID as string,
 			clientSecret: process.env.NEXT_PUBLIC_GOOGLE_AUTH_CLIENT_SECRET as string,
-			redirectProxyUrl: "/api/auth/callback/google",
-			
+			authorization: {
+				params: {
+					prompt: "consent",
+					access_type: "offline",
+					response_type: "code",
+				},
+			},
 		}),
 	],
 	callbacks: {
